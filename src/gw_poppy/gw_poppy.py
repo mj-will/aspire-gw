@@ -8,9 +8,9 @@ class GWPoppy(Poppy):
 
     @classmethod
     def from_bilby_pipe_ini(
-        cls, *, ini_file, data_dump_file, map_fn=map, **kwargs
+        cls, *, ini_file, data_dump_file, **kwargs
     ):
-        inputs = get_inputs_from_bilby_pipe_ini(ini_file, data_dump_file, map_fn=map_fn)
+        inputs = get_inputs_from_bilby_pipe_ini(ini_file, data_dump_file)
         return cls(
            log_likelihood=inputs.log_likelihood,
            log_prior=inputs.log_prior,
@@ -20,7 +20,7 @@ class GWPoppy(Poppy):
            periodic_parameters=inputs.periodic_parameters,
            **kwargs
         )
-
+ 
     def fit_from_bilby_result(self, result = None, result_file: str = None, **kwargs):
         from bilby.core.result import read_in_result
         if result is None:
