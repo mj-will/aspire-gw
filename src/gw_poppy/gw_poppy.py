@@ -8,9 +8,18 @@ class GWPoppy(Poppy):
 
     @classmethod
     def from_bilby_pipe_ini(
-        cls, *, ini_file, data_dump_file, **kwargs
+        cls,
+        *,
+        ini_file,
+        data_dump_file,
+        suppress_bilby_logger: bool = True, 
+        **kwargs
     ):
-        inputs = get_inputs_from_bilby_pipe_ini(ini_file, data_dump_file)
+        inputs = get_inputs_from_bilby_pipe_ini(
+            ini_file,
+            data_dump_file,
+            suppress_bilby_logger=suppress_bilby_logger,
+        )
         return cls(
            log_likelihood=inputs.log_likelihood,
            log_prior=inputs.log_prior,
