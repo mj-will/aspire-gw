@@ -7,9 +7,9 @@ name = "poppy-gw"
 authors = [
     {name = "Michael J. Williams", email = "michaeljw1@googlemail.com"},
 ]
-description = "Gravitational-wave Posterior Post-processing in Python"
+description = "Gravitational-wave extensions to poppy"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 license = {text = "MIT"}
 classifiers = [
     "Programming Language :: Python :: 3",

@@ -6,7 +6,24 @@ logger = logging.getLogger(__name__)
 
 
 class GWFlow(ZukoFlow):
-    """Wrapper gwflow to be used with poppy."""
+    """Wrapper gwflow to be used with poppy.
+
+    Can be used by specifying `flow_backend='gwflow'` in `Poppy`.
+
+    Parameters
+    ----------
+    dims : int
+        Dimensionality of the data.
+    data_transform : poppy.transforms.Transform, optional
+        Data transform to apply to the data before fitting the flow.
+    seed : int, optional
+        Random seed for reproducibility, by default 1234.
+    device : str, optional
+        Device to use for training, by default "cpu".
+    parameters : list[str]
+        List of parameter names corresponding to the dimensions. Must be
+        provided if using GWCalFlow.
+    """
 
     def __init__(
         self,
