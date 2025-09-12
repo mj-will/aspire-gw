@@ -26,8 +26,9 @@ jax = [
     "jaxlib",
     "flowjax"
 ]
-torch = [
-    "torch",
+gwflow = [
+    "gwflow",
+    "zuko",
 ]
 bilby = [
     "poppy-bilby",
