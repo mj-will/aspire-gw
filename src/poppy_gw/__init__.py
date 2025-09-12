@@ -1,10 +1,10 @@
 """
-bayesian-poppy: Bayesian posterior post-processing in python
+poppy-gw: Gravitational-wave extensions to poppy
 """
 from importlib.metadata import PackageNotFoundError, version
 import logging
 
-from .gw_poppy import GWPoppy  
+from .poppy_gw import GWPoppy  
 
 try:
     __version__ = version(__name__)

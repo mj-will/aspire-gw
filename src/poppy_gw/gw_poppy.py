@@ -4,6 +4,7 @@ from poppy_bilby.utils import (
     samples_from_bilby_result,
 )
 
+
 class GWPoppy(Poppy):
 
     @classmethod
@@ -36,3 +37,5 @@ class GWPoppy(Poppy):
             result = read_in_result(result_file)
         samples = samples_from_bilby_result(result, self.parameters)
         return self.fit(samples, **kwargs)
+
+
