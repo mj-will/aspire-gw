@@ -51,4 +51,4 @@ fixable = ["ALL"]
 extend-select = ["I"]
 
 [project.entry-points."poppy.flows"]
-gwflow = "gw_poppy.flows:GWFlow"
+gwflow = "poppy_gw.flows:GWFlow"
