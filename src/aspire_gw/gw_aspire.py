@@ -1,15 +1,15 @@
 from typing import TYPE_CHECKING
 
-from poppy import Poppy
+from aspire import Aspire
 
 if TYPE_CHECKING:
     import bilby
 
 
-class GWPoppy(Poppy):
-    """A Poppy class for gravitational-wave inference.
+class GWAspire(Aspire):
+    """A Aspire class for gravitational-wave inference.
 
-    This class extends the `Poppy` class to facilitate gravitational-wave
+    This class extends the `Aspire` class to facilitate gravitational-wave
     inference tasks. It includes methods to initialize from a Bilby Pipe
     INI file and to fit using samples from a Bilby result.
 
@@ -24,7 +24,7 @@ class GWPoppy(Poppy):
         suppress_bilby_logger: bool = True,
         **kwargs,
     ):
-        """Generate a `GWPoppy` instance from a Bilby Pipe INI file.
+        """Generate a `GWAspire` instance from a Bilby Pipe INI file.
 
         Parameters
         ----------
@@ -35,9 +35,9 @@ class GWPoppy(Poppy):
         suppress_bilby_logger : bool, optional
             Whether to suppress the Bilby logger output. Default is True.
         **kwargs
-            Additional keyword arguments to pass to the `GWPoppy` constructor.
+            Additional keyword arguments to pass to the `GWAspire` constructor.
         """
-        from poppy_bilby.utils import get_inputs_from_bilby_pipe_ini
+        from aspire_bilby.utils import get_inputs_from_bilby_pipe_ini
 
         inputs = get_inputs_from_bilby_pipe_ini(
             ini_file,
@@ -72,8 +72,8 @@ class GWPoppy(Poppy):
         **kwargs
             Additional keyword arguments to pass to the `fit` method.
         """
+        from aspire_bilby.utils import samples_from_bilby_result
         from bilby.core.result import read_in_result
-        from poppy_bilby.utils import samples_from_bilby_result
 
         if result is None:
             result = read_in_result(result_file)

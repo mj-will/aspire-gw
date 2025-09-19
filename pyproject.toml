@@ -3,11 +3,11 @@ requires = ["setuptools>=45", "setuptools-scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "poppy-gw"
+name = "aspire-gw"
 authors = [
     {name = "Michael J. Williams", email = "michaeljw1@googlemail.com"},
 ]
-description = "Gravitational-wave extensions to poppy"
+description = "Gravitational-wave extensions to aspire"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "poppy",
+    "aspire",
 ]
 
 dynamic = ["version"]
@@ -31,7 +31,7 @@ gwflow = [
     "zuko",
 ]
 bilby = [
-    "poppy-bilby",
+    "aspire-bilby",
     "bilby>=2.3.0",
 ]
 test = [
@@ -50,5 +50,5 @@ target-version = "py39"
 fixable = ["ALL"]
 extend-select = ["I"]
 
-[project.entry-points."poppy.flows"]
-gwflow = "poppy_gw.flows:GWFlow"
+[project.entry-points."aspire.flows"]
+gwflow = "aspire_gw.flows:GWFlow"

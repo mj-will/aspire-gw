@@ -1,8 +1,8 @@
 import logging
 from dataclasses import dataclass, field
 
-from poppy.flows.torch.flows import BaseTorchFlow, ZukoFlow
-from poppy.history import FlowHistory
+from aspire.flows.torch.flows import BaseTorchFlow, ZukoFlow
+from aspire.history import FlowHistory
 
 logger = logging.getLogger(__name__)
 
@@ -42,15 +42,15 @@ class GWFlowHistory(FlowHistory):
 
 
 class GWFlow(ZukoFlow):
-    """Wrapper gwflow to be used with poppy.
+    """Wrapper gwflow to be used with aspire.
 
-    Can be used by specifying `flow_backend='gwflow'` in `Poppy`.
+    Can be used by specifying `flow_backend='gwflow'` in `Aspire`.
 
     Parameters
     ----------
     dims : int
         Dimensionality of the data.
-    data_transform : poppy.transforms.Transform, optional
+    data_transform : aspire.transforms.Transform, optional
         Data transform to apply to the data before fitting the flow.
     seed : int, optional
         Random seed for reproducibility, by default 1234.
