@@ -30,6 +30,7 @@ gwflow = [
     "gwflow",
     "zuko",
     "matplotlib",
+    "aspire-inference[torch]",
 ]
 bilby = [
     "aspire-bilby",
