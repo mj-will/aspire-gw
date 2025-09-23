@@ -2,6 +2,14 @@
 
 Gravitational-wave extensions to `aspire`.
 
+## Installation
+
+`aspire-gw` is available to install from PyPI:
+
+```
+pip install aspire-gw
+```
+
 ## GWAspire
 
 `aspire-gw` provides `GWAspire` a subclass of `Aspire` that has additional functionality
