@@ -15,7 +15,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "aspire",
+    "aspire-inference",
 ]
 
 dynamic = ["version"]
@@ -29,6 +29,7 @@ jax = [
 gwflow = [
     "gwflow",
     "zuko",
+    "matplotlib",
 ]
 bilby = [
     "aspire-bilby",
