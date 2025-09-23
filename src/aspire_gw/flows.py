@@ -87,7 +87,7 @@ class GWFlow(ZukoFlow):
         self.flow = GWCalFlow(parameters=parameters, **kwargs)
         logger.info(f"Initialized GWCalFlow: \n {self.flow}\n")
 
-    def fit(self, *args, pre_train_cal: int = 0.0, **kwargs):
+    def fit(self, x, pre_train_cal: int = 0.0, **kwargs):
         """Fit the flow to the data.
 
         Parameters
@@ -98,7 +98,7 @@ class GWFlow(ZukoFlow):
         *args, **kwargs :
             Passed to the `fit` method of the underlying flow.
         """
-        if pre_train_cal > 0:
+        if pre_train_cal:
             logger.info(
                 f"Pretraining calibration network for {pre_train_cal} epochs."
             )
@@ -110,7 +110,7 @@ class GWFlow(ZukoFlow):
             # Run the normal fit loop for calibration only
             pre_train_kwargs = kwargs.copy()
             pre_train_kwargs["n_epochs"] = pre_train_cal
-            pre_train_history = super().fit(*args, **pre_train_kwargs)
+            pre_train_history = super().fit(x, **pre_train_kwargs)
 
             # Unfreeze GW flow
             for p in self.flow.flow_gw.parameters():
@@ -119,16 +119,16 @@ class GWFlow(ZukoFlow):
             pre_train_history = FlowHistory()
 
         # Now run the full joint fit
-        flow_history = super().fit(*args, **kwargs)
+        flow_history = super().fit(x, **kwargs)
 
         history = GWFlowHistory(
             training_loss=flow_history.training_loss,
             validation_loss=flow_history.validation_loss,
             pre_training_loss=pre_train_history.training_loss
-            if pre_train_cal > 0
+            if pre_train_cal
             else [],
             pre_training_val_loss=pre_train_history.validation_loss
-            if pre_train_cal > 0
+            if pre_train_cal
             else [],
         )
         return history
