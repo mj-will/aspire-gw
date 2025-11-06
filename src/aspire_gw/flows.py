@@ -1,5 +1,6 @@
 import logging
 from dataclasses import dataclass, field
+from typing import Any
 
 from aspire.flows.torch.flows import BaseTorchFlow, ZukoFlow
 from aspire.history import FlowHistory
@@ -68,6 +69,7 @@ class GWFlow(ZukoFlow):
         seed=1234,
         device: str = "cpu",
         parameters: list[str] = None,
+        dtype: Any | str | None = None,
         **kwargs,
     ):
         from gwflow import GWCalFlow
@@ -78,6 +80,7 @@ class GWFlow(ZukoFlow):
             device=device,
             data_transform=data_transform,
             seed=seed,
+            dtype=dtype,
         )
 
         if hidden_features := kwargs.pop("hidden_features", None):
